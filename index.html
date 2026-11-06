@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flying Strategies LLC</title>
+<meta name="description" content="Flying Strategies LLC is the Florida company behind CruiseNCrawl, Crappin' Ain't Easy and CruiseFolio, and builds websites and web apps for organizations.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: one calm column. Header, thesis, three brand cards, services with a client, contact. Navy and fox orange from the logo. */
+:root {
+  --paper: #EEF1F4;
+  --surface: #FFFFFF;
+  --ink: #12233D;
+  --muted: #4B5A70;
+  --line: #D3DAE3;
+  --fox: #D9561F;
+  --fox-ink: #A63F14;
+  --stage-light: #F7F9FC;
+  --stage-dark: #000000;
+  --chip: #E3E8EF;
+  --font-display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1828; --surface: #142238; --ink: #EEF1F4; --muted: #A9B4C4;
+    --line: #26354D; --fox: #E8703A; --fox-ink: #F2905F; --chip: #1C2C45;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1828; --surface: #142238; --ink: #EEF1F4; --muted: #A9B4C4;
+  --line: #26354D; --fox: #E8703A; --fox-ink: #F2905F; --chip: #1C2C45;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--fox-ink); }
+a:hover { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--fox); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+.eyebrow {
+  font-family: var(--font-display); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0;
+}
+
+/* Header */
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand span { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.01em; white-space: nowrap; }
+.brand b { font-weight: 700; }
+.site-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+.site-nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; }
+.site-nav a:hover { color: var(--fox-ink); }
+
+/* Hero */
+.hero .wrap { padding-block: 56px 72px; display: grid; gap: 20px; }
+.hero h1 { font-size: clamp(34px, 5.4vw, 60px); line-height: 1.08; letter-spacing: -0.025em; max-width: 17ch; }
+.hero h1 em { font-style: normal; color: var(--fox); }
+.hero p.lede { font-size: 20px; color: var(--muted); max-width: 60ch; margin: 0; }
+
+/* Sections */
+section.block .wrap { padding-block: 64px; display: grid; gap: 32px; }
+section.block + section.block .wrap { border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 10px; max-width: 62ch; }
+.section-head h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.02em; line-height: 1.15; }
+.section-head p { margin: 0; color: var(--muted); }
+
+/* Brand cards */
+.brands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.stage { aspect-ratio: 16 / 10; max-width: 100%; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.stage img { max-height: 100%; width: auto; object-fit: contain; }
+.stage--light { background: var(--stage-light); }
+.stage--dark { background: var(--stage-dark); padding: 0; }
+.stage--dark img { width: 100%; height: 100%; object-fit: cover; }
+.stage--folio { background: #0F2E3A; }
+.folio-word { font-family: var(--font-display); font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: #FFFFFF; }
+.folio-word i { font-style: normal; color: #7FD3C7; }
+.card-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.card h3 { font-size: 22px; letter-spacing: -0.01em; }
+.card .tag { font-family: var(--font-display); font-size: 13px; color: var(--muted); letter-spacing: 0.04em; margin: -6px 0 0; }
+.card p { margin: 0; color: var(--muted); font-size: 17px; }
+.platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; background: var(--chip); color: var(--ink); text-decoration: none; white-space: nowrap;
+}
+a.chip:hover { background: var(--ink); color: var(--paper); }
+.chip--soon { background: transparent; border: 1px dashed var(--line); color: var(--muted); font-weight: 400; }
+.site-link { font-weight: 600; font-size: 16px; text-decoration: none; }
+.site-link:hover { text-decoration: underline; }
+
+/* Services */
+.services { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.services ul { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; }
+.client { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; align-items: center; }
+.client img { width: 120px; height: 120px; object-fit: contain; }
+.client h3 { font-size: 19px; }
+.client p { margin: 6px 0 10px; color: var(--muted); font-size: 16px; }
+
+/* Contact */
+.contact { display: grid; gap: 12px; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.email { font-family: var(--font-display); font-size: clamp(22px, 3.2vw, 32px); font-weight: 600; color: var(--ink); text-decoration: none; user-select: all; overflow-wrap: anywhere; }
+.copy-btn { font: inherit; font-size: 15px; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; min-height: 44px; }
+.copy-btn:hover { border-color: var(--ink); }
+.contact .note { margin: 0; color: var(--muted); font-size: 16px; max-width: 62ch; }
+
+/* Footer */
+.site-footer .wrap { padding-block: 28px 40px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: 14px; }
+.site-footer p { margin: 0; }
+
+@media (max-width: 920px) {
+  .brands { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .client { grid-template-columns: minmax(0, 1fr); }
+  .site-nav { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Flying Strategies LLC home">
+      <span><b>Flying</b> Strategies LLC</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#brands">Brands</a>
+      <a href="#services">Web services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Florida software company</p>
+      <h1>We build apps for people who <em>cruise</em> and people who <em>roll dice</em>.</h1>
+      <p class="lede">Flying Strategies LLC is the company behind CruiseNCrawl, Crappin' Ain't Easy and CruiseFolio. We also build and maintain websites and web apps for other organizations.</p>
+    </div>
+  </section>
+
+  <section class="block" id="brands" aria-labelledby="brands-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Our brands</p>
+        <h2 id="brands-title">Three products, each with its own home</h2>
+        <p>Every brand runs its own website with app support, privacy details and account help.</p>
+      </div>
+
+      <div class="brands">
+        <article class="card">
+          <div class="stage stage--light">
+            <img src="assets/brands/cruisencrawl.png" alt="CruiseNCrawl logo" width="900" height="426">
+          </div>
+          <div class="card-body">
+            <h3>CruiseNCrawl</h3>
+            <p class="tag">Cruise · Connect · Celebrate</p>
+            <p>The cruise vacation companion built around the onboard pub crawl. The app tracks your crawl ship by ship, and the website adds planning tools and merch.</p>
+            <a class="site-link" href="https://cruisencrawl.com" target="_blank" rel="noopener">cruisencrawl.com</a>
+            <div class="platforms">
+              <a class="chip" href="https://apps.apple.com/us/app/cruisencrawl/id6754467915" target="_blank" rel="noopener">App Store</a>
+              <span class="chip chip--soon">Google Play · coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage stage--dark">
+            <img src="assets/brands/crappinainteasy.jpg" alt="Crappin' Ain't Easy logo" width="900" height="600">
+          </div>
+          <div class="card-body">
+            <h3>Crappin' Ain't Easy</h3>
+            <p class="tag">Craps tracking · Team · Merch</p>
+            <p>A craps session tracker for players who want their real numbers. The brand also fields the Crappin' Ain't Easy team in the Craps Player League and sells merch.</p>
+            <a class="site-link" href="https://crappinainteasy.com" target="_blank" rel="noopener">crappinainteasy.com</a>
+            <div class="platforms">
+              <a class="chip" href="https://apps.apple.com/us/app/crappin-aint-easy/id6818883171" target="_blank" rel="noopener">App Store</a>
+              <span class="chip chip--soon">Google Play · coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage stage--light">
+            <img src="assets/brands/cruisefolio.png" alt="CruiseFolio whale captain logo" width="700" height="589">
+          </div>
+          <div class="card-body">
+            <h3>CruiseFolio</h3>
+            <p class="tag">Cruise cost tracking</p>
+            <p>A cruise cost tracker that shows what each sailing really cost. Fares, onboard spend, loyalty perks and casino results roll up into one trip total.</p>
+            <a class="site-link" href="https://cruisefolio.app" target="_blank" rel="noopener">cruisefolio.app</a>
+            <div class="platforms">
+              <span class="chip chip--soon">App Store · coming soon</span>
+              <span class="chip chip--soon">Google Play · coming soon</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="services">
+        <div class="section-head">
+          <p class="eyebrow">Web services</p>
+          <h2 id="services-title">Websites and web apps, built and kept running</h2>
+          <p>We build and maintain websites and web apps for organizations, on the same stack we use for our own products.</p>
+          <ul>
+            <li>Public websites and member portals</li>
+            <li>Databases, logins and admin tools</li>
+            <li>Hosting, updates and ongoing maintenance</li>
+          </ul>
+        </div>
+        <div class="client">
+          <img src="assets/brands/cpl.png" alt="Craps Player League logo" width="600" height="600">
+          <div>
+            <p class="eyebrow">Client</p>
+            <h3>Craps Player League</h3>
+            <p>Website and web app development and maintenance.</p>
+            <a class="site-link" href="https://crapsplayerleague.com" target="_blank" rel="noopener">crapsplayerleague.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title" class="sr-title" style="font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.02em;">Get in touch</h2>
+        <div class="email-row">
+          <a class="email" id="email" href="mailto:info@flyingstrategies.com">info@flyingstrategies.com</a>
+          <button class="copy-btn" id="copy-email" type="button">Copy address</button>
+        </div>
+        <p class="note">For help with one of our apps, the fastest route is the support page on that app's own website.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Flying Strategies LLC, a Florida limited liability company.</p>
+    <p>CruiseNCrawl is a d/b/a of Flying Strategies LLC.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var addr = 'info@flyingstrategies.com';
+  btn.addEventListener('click', function () {
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy address'; }, 2000); }
+    function fallback() {
+      var el = document.getElementById('email');
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, press Ctrl+C';
+    }
+    try {
+      navigator.clipboard.writeText(addr).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
