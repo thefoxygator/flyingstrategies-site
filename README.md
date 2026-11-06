@@ -6,4 +6,4 @@ Company website for Flying Strategies LLC. Static HTML served by GitHub Pages.
 - `assets/brands/` — brand logos (CruiseNCrawl, Crappin' Ain't Easy, CruiseFolio, Craps Player League)
 - `favicon.*`, `apple-touch-icon.png` — browser icons
 
-A `CNAME` file containing `flyingstrategies.com` is added at DNS cutover.
+`CNAME` points the site at flyingstrategies.com (DNS at Squarespace).
